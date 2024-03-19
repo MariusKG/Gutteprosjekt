@@ -1,0 +1,37 @@
+@import url('https://fonts.cdnfonts.com/css/dasher');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    text-align: center;
+    background-color: burlywood;
+    padding: 20px;
+}
+
+
+
+h1{
+    
+    font-weight: 400;
+    font-style: normal;
+}
+
+main{
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    
+
+}
+
+a {
+    border: 2px solid black;
+    padding: 1px; 
+    margin: 20px;
+    height: 20px;
+    width: 40px;
+}
+
