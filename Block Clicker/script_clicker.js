@@ -84,6 +84,6 @@ const bImg3 = document.getElementById(`bImg3`)
 for(let i=0;i<shopList.length;i++){
     eval(`bImg${i}`).addEventListener('click', function(){
         mainEl.style.backgroundImage = `url("${shopList[i]}")`
-        eval(`bimg${i}`).style.objectFit = 'contain'
+        eval(`bImg${i}`).style.objectFit = 'contain'
     })
 }
