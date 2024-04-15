@@ -4,20 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Block World - Block Clicker</title>
+    <link rel="stylesheet" href="stylesheet_clicker.css">
 </head>
 <body>
     <header>
-
+        <a href="#" target="_blank" class="headerKnapp">Exit</a>
+        <button class="headerKnapp" id="shop">Shop</button>
+        <button class="headerKnapp" id="info">About the game</button>
     </header>
     <main>
-        <canvas>
+        <!--Lager meny for higscore knappen-->
+        <div id="infoMenu">
+            <button id="infoExit">Exit</button>
+            <h1>Block Clicker</h1>
+            <p id="infotext">Welcome to block clicker! You earn score by left-clicking on the big block. Once you have clicked a lot, you will start making great discoveries. You can also change backgrounds in the shop menu</p>
+        </div>
+        <!--Lager meny for shop knappen-->
+        <div id="shopMenu">
+            <button id="shopExit">Exit</button>
+            <div id="backgrounds">
+                <div id="bImg0">No background</div>
+                <div id="bImg1">Plains</div>
+                <div id="bImg2">Nether</div>
+                <div id="bImg3">Nadderud</div>
+            </div>
+        </div>
 
-        </canvas>
+        <p id="antallKlikk">klikk her</p>
+        <div id="block"><img src="./minecraft-dirt.png" alt="Block" id="blokkbilde"></div>
+        <p id="tilbakemelding"></p>
     </main>
     <footer>
-        <div>
+        <p id="nivå"></p>
 
-        </div>
     </footer>
+
+    <script src="script_clicker.js"></script>
 </body>
 </html>
