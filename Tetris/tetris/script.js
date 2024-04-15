@@ -109,7 +109,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
    //lager en funskjon for at blokkene skal stoppe
    function freeze() {
-    if(current.some(index => squares[currentPosition + index + width].classList.contains('taken'))){
+    if(
+        current.some(index => squares[currentPosition + index + width].classList.contains('full')) 
+        ||  
+        current.some(index => squares[currentPosition + index + width].classList.contains('taken'))
+    ){
         current.forEach(index => squares[currentPosition + index].classList.add('taken'))
         //gjør så en ny tertomino starter når forrige stopper 
         random = nextRandom
@@ -120,6 +124,9 @@ document.addEventListener('DOMContentLoaded', () => {
         addScore()
     }
     }
+    
+   
+       
     
 
 //Lager en funksjon for å flytte tetrominoen til venstre, men så den stopper når man treffer kanten
@@ -157,14 +164,12 @@ function rotate (){
     draw()
 }
 
-//add score
+//Funksjon for å fjerne tetrominoer når du har 1o ved siden, pluss å legge til score senere
 function addScore() {
     for (let i = 0; i < 199; i +=width) {
       const row = [i, i+1, i+2, i+3, i+4, i+5, i+6, i+7, i+8, i+9]
 
       if(row.every(index => squares[index].classList.contains('taken'))) {
-        score +=10
-        scoreDisplay.innerHTML = score 
         row.forEach(index => {
           squares[index].classList.remove('taken')
           squares[index].classList.remove('tetromino')
