@@ -1,0 +1,47 @@
+
+ /* Lager et format for området banen skal være på. bestemmer også at indexen går i wrap, altså mot siden*/
+.container{
+    display: flex;
+}
+
+/* Gir alle div-ene i grid elementet en plass inennfor grid-klassen*/
+.grid div{ 
+    height: 40px;
+    width: 40px;
+
+}
+
+.taken{
+    background-color: black;
+}
+
+.tetromino{
+    background-color:rgb(249, 125, 0) ;
+   
+}
+
+*{
+    text-align: center;
+    margin: 0 auto;
+   
+}
+
+body{
+    background-color: rgb(225, 255, 217);
+}
+.grid{
+    width: 400px;
+    height: 800px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: turquoise;
+    border: solid 2px black;
+}
+
+button{
+    margin-bottom: 30px;
+    margin-top: 30px;
+    background-color: purple;
+    color: white;
+    padding: 10px;
+}
