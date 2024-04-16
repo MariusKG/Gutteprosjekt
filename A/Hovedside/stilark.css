@@ -51,6 +51,7 @@ a:hover{
     transition: 0.5s;
     box-shadow: 5px 5px 3px rgba(44, 99, 151, 0.5);
     transform: scale(1.05); 
+    cursor: pointer;
 }
  
 a p {  
@@ -78,7 +79,7 @@ a p {
 }
 
 #spillForklaring{
-    width: 60%;
+    width: 70%;
     height: 300vh;
     position: relative;
    
@@ -145,7 +146,7 @@ button{
 }
 
 button:hover{
-    background-color: rgb(173, 216, 255);
+    background-color: rgba(44, 99, 151, 0.4);
     box-shadow: 3px 3px #434343;
     transition: 0.5s;
     cursor: pointer;
@@ -182,9 +183,6 @@ button:hover{
     position: absolute;
     width: 70%;
     height: 50vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
     left: 14.5%;
 
     top: 5%;
