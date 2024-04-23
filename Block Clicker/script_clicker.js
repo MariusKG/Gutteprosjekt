@@ -17,7 +17,13 @@ const blocks = ['minecraft-dirt.png', 'minecraft-stein.png', 'minecraft-sand.png
 const blocksName = ['dirt', 'a rock', 'sand', 'gold', 'diamond', 'a tetris block, go play it']
 
 //Øker scoren, og lagrer i local storage
-let score = 0
+
+// Sjekker om localStorage er mulig
+if (typeof localStorage !== 'undefined') {
+    // legger til localStorage.score hvis den ikke finnes
+    if (!localStorage.score) {
+        localStorage.score = 0;
+    }}
 blockimgEl.addEventListener('click', function klikk(){
     localStorage.score=Number(localStorage.score)+1
     klikkEl.innerHTML='clicks='+ localStorage.score
