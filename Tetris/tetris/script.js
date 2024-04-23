@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     const grid = document.querySelector('.grid')
-    let squares = Array.from(document.querySelectorAll('.grid div')) //lager et array for alle de 200 div elementene i grid. De får hver sin verdi fra 0-199
+    let squares = Array.from(document.querySelectorAll('.grid div')) //lager et array for alle de 200 div elementene i grid klassen. De får hver sin verdi fra 0-199
     let scoreDisplay = document.querySelector('#score')
     const startBtn = document.querySelector('#startButton') 
     const width = 10
@@ -16,6 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
         'gold'
       ]
       let score = 0
+      let highscoreDisplay = document.querySelector('#highScore')
+      let highScore = 0
+
+      highscoreDisplay.innerHTML = Number(localStorage.teller)
+      
 
 
    //Tetrominoer(navn for figurene). Lager de ulike formene tetris-blokkene kommer i. Bokastavene representerer formene
@@ -125,6 +130,10 @@ document.addEventListener('DOMContentLoaded', () => {
         draw()
         addScore()
         gameOver()
+        score += 10
+        scoreDisplay.innerHTML = score
+        newHighScore()
+
     }
     }
     
@@ -137,8 +146,9 @@ document.addEventListener('DOMContentLoaded', () => {
             current.some(index => squares[currentPosition + index + width].classList.contains('taken'))
         ){
             console.log("gameover")
-            scoreDisplay.innerHTML = 'end'
             clearInterval(timerId)
+            resetGame()
+
     
         }
     }
@@ -190,25 +200,58 @@ function addScore() {
           squares[index].classList.remove('taken')
           squares[index].classList.remove('tetromino')
           squares[index].style.backgroundColor = ''
-          score += 100
+          score += 10
           scoreDisplay.innerHTML = score
+         
+          
         })
         const squaresRemoved = squares.splice(i, width)
         squares = squaresRemoved.concat(squares)
         squares.forEach(cell => grid.appendChild(cell))
       }
+      newHighScore()
     }
   }
-
+ 
   //Gjør så man ikke kan scrolle nedover med arrowkeys
   window.addEventListener("keydown", function(e) {
     if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
         e.preventDefault();
     }
 }, false)
-  
+
+if(!localStorage.teller){
+    localStorage.teller = 0
+}
+else{
+    localStorage.teller = Number(localStorage.teller)
+}
 
 
+
+function newHighScore (){
+    if(score > localStorage.teller){
+        highScore = score
+        localStorage.teller = highScore
+        console.log("New Highscore")
+        highscoreDisplay.innerHTML = `${localStorage.teller}`
+    
+    }
+}
+
+
+
+
+function resetGame(){
+    console.log("hei")
+    score = 0
+    
+   
+}
+
+
+
+    
 
 
 
