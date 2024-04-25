@@ -36,8 +36,8 @@ let ball = {
 let blockArray = [];
 let blockWidth = 60; //60
 let blockHeight = 20; //20
-let blockColumns =  1; //10
-let blockRows = 1; //legger til mer ettersom spillet fortsetter //3
+let blockColumns =  10; //10
+let blockRows = 3; //legger til mer ettersom spillet fortsetter //3
 let blockMaxRows = 10; //grense på hvor mange rader det kan bli
 let blockCount = 0;
 
@@ -46,11 +46,12 @@ let blockX = 15;
 let blockY = 45;
 
 let score = 0;
-let highscore = localStorage.getItem("highscore") || 0;
+let highscore = localStorage.getItem("highscore")|| 0
 let level = 1;
 let gameOver = false;
 
-let buttonEl = document.getElementById('startKnapp');
+let buttonEl = document.getElementById('startKnapp')
+
 let bomb = {
     x: Math.random() * (boardWidth - 50), // Tilfeldig startposisjon innenfor brettets bredde
     y: 200, // Startposisjon nær toppen av brettet
@@ -58,11 +59,11 @@ let bomb = {
     height: 15, //50
     velocityX: 2, // Hastighet i x-retning
     velocityY: 0 // Hastighet i y-retning
-}
+};
 
 
 window.onload = function() { //onload = kjøres når vinduet er ferdig lastet inn
-    board = document.getElementById("board");
+    board = document.getElementById("board")
     board.height = boardHeight;
     board.width = boardWidth;
     ctx = board.getContext("2d"); //For å kunne tegne på brettet
@@ -76,26 +77,31 @@ window.onload = function() { //onload = kjøres når vinduet er ferdig lastet in
 
     //lage blokker
     createBlocks();
-};
+}
 
 //"Game loop"
 function update() { //For å oppdatere framen
     requestAnimationFrame(update);
     if(gameOver) {
         //Setter ny highscore
-        if (score > highscore){
-            localStorage.setItem("highscore", score);
-            highscore = localStorage.getItem("highscore") || 0;
-        }
+    if (score > highscore){
+        localStorage.setItem("highscore", score);
+        highscore = localStorage.getItem("highscore")|| 0
+    }
         return;
     }
-    ctx.clearRect(0, 0, board.width, board.height); //Fjerner den tidligere posisjonen til spilleren
+    ctx.clearRect(0, 0, board.width, board.height) //Fjerner den tidligere posisjonen til spilleren
     
     //spiller
     ctx.fillStyle = "lightblue";
     ctx.fillRect(player.x, player.y, player.width, player.height);
 
-    // Ball
+    //bombe
+    ctx.fillStyle = "red"; // Farge for bomben (kan endres etter behov)
+    ctx.fillRect(bomb.x, bomb.y, bomb.width, bomb.height);
+
+
+    //ball
     ctx.fillStyle = "white";
     ball.x += ball.velocityX; //posisjonen i x-retning øker med ballVelocityX
     ball.y += ball.velocityY; //posisjonen i y-retning øker med ballVelocityY
@@ -122,40 +128,24 @@ function update() { //For å oppdatere framen
         ball.velocityY *= -1; //Endre y retningen opp eller ned
         
         if (rightCollisionPadle(ball, player)){
-            ball.velocityX += 1; //0.5
-            console.log("høyre");
+            ball.velocityX += 1 //0.5
+            console.log("høyre")
         }
         if (leftCollisionPadle(ball, player)){
-            ball.velocityX -= 1; //0.5
-            console.log("venstre");
+            ball.velocityX -= 1 //0.5
+            console.log("venstre")
         }
     }
+
     // Sjekk om ballen treffer bomben
-    if(level >= 3){
-    if (detectCollision(ball, bomb)) {
-        if (topCollision(ball, bomb) || bottomCollision(ball, bomb)) {
-            ball.velocityY *= -1; //endre y retning på ballen
-            score -= 100;
-        } else if (leftCollision(ball, bomb) || rightCollision(ball, bomb)) {
-            ball.velocityX *= -1; //endre x retning på ballen
-            score -= 100;
-    }}}
-
-    // Sjekk om bomben skal vises på canvaset (fra nivå 2)
-    if (level >= 2) {
-        //bombe
-        ctx.fillStyle = "red"; // Farge for bomben (kan endres etter behov)
-        ctx.fillRect(bomb.x, bomb.y, bomb.width, bomb.height);
-
-        // Oppdater bombens posisjon
-        bomb.x += bomb.velocityX;
-        bomb.y += bomb.velocityY;
-
-        // Sjekk om bomben treffer venstre eller høyre side av brettet
-        if (bomb.x <= 0 || bomb.x + bomb.width >= boardWidth) {
-            bomb.velocityX *= -1; // Endre retningen hvis bomben treffer sidene
-        }
-    }
+if (detectCollision(ball, bomb)) {
+    if (topCollision(ball, bomb) || bottomCollision(ball, bomb)) {
+        ball.velocityY *= -1; //endre y retning på ballen
+        score -= 100;
+    } else if (leftCollision(ball, bomb) || rightCollision(ball, bomb)) {
+        ball.velocityX *= -1; //endre x retning på ballen
+        score -= 100;
+}}
 
     //blokker
     //går gjennom blokkene i blockArray, sjekker om de er ødelagt || ikke,  tegner de !ødelagte blokkene
@@ -163,7 +153,7 @@ function update() { //For å oppdatere framen
         let block = blockArray[i];
         if (!block.break) {
             if (topCollision(ball, block) || bottomCollision(ball, block)) {
-                block.break = true; //blokk blir ødelagt
+                block.break = true //blokk blir ødelagt
                 ball.velocityY *= -1; //endre y retning på ballen
                 blockCount -= 1;
                 score += 100;
@@ -184,15 +174,15 @@ function update() { //For å oppdatere framen
 
     //nye leveler
     if (blockCount == 0) {//Hvis alle blokkene er borte
-        score += 100 * blockColumns; //bonus poeng
+        score += 100*blockColumns //bonus poeng
         //Øker farten til ballen, og spilleren
-        ballVelocityY += .3;
-        ballVelocityX += .3;
-        player.velocityX += 4;
+        ballVelocityY += .3
+        ballVelocityX += .3
+        player.velocityX += 4
         
         blockRows = Math.min(blockRows + 1, blockMaxRows); //Oppdaterer blockRows til: legg til en til den når blockMaxRows
         createBlocks();
-        level += 1;
+        level += 1
 
         //Setter posisjonen til ballen til start posisjon
         ball = {
@@ -202,9 +192,15 @@ function update() { //For å oppdatere framen
             height : ballHeight,
             velocityX : ballVelocityX,
             velocityY : ballVelocityY
-        };
-    }
-    
+        }
+
+        //Endre bomben etter leveler
+        bomb.width += 100
+        bomb.height += 100
+        bomb.velocityX += 5
+       
+
+}
     //Level
     ctx.font = "35px Comic Sans MS";
     ctx.fillText(`Level: ${level}`, 340, boardHeight/2);
@@ -215,7 +211,24 @@ function update() { //For å oppdatere framen
     //highscore
     ctx.font = "20px Comic Sans MS";
     ctx.fillText("Highscore: " + highscore, 600, 25);
-};
+
+    // Oppdater bombens posisjon
+    bomb.x += bomb.velocityX;
+    bomb.y += bomb.velocityY;
+
+    
+
+
+// Sjekk om bomben treffer venstre eller høyre side av brettet
+if (bomb.x <= 0 || bomb.x + bomb.width >= boardWidth) {
+    bomb.velocityX *= -1; // Endre retningen hvis bomben treffer sidene
+}
+
+
+} 
+//Her ender update funksjonen
+
+
 
 // Funksjon for å velge tilfeldig farge fra arrayet
 function randomBlockColor() {
@@ -229,10 +242,15 @@ function randomBlockColor() {
 
 //Setter grenser på venstre og høyre siden
 function outOfBounds(xPosition){
-    return (xPosition < -playerWidth || xPosition > boardWidth); 
+    return (xPosition < -playerWidth || xPosition > boardWidth) 
 }
 
 //Funksjon for å flytte spiller til venstre/høyre
+//Setter grenser på venstre og høyre siden
+function outOfBounds(xPosition){
+    return (xPosition < -playerWidth || xPosition > boardWidth) 
+}
+
 function movePlayer(e) {
     if(gameOver) {
         if (e.code == "Space") {
@@ -301,8 +319,8 @@ function createBlocks(){
     for (let c = 0; c < blockColumns; c++) { // Setter x-posisjonen til blokkene. blockX = startposisjonen langs x-aksen. c * blockWidth = avstand mellom hver blokk 
         for (let r = 0; r < blockRows; r++) { // Setter y-posisjonen til blokkene. blockY = startposisjonen langs y-aksen. r * blockHeight = avstand mellom hver blokk i raden.
             let block = { // Plasserer blokkene etter hverandre
-                x : blockX + c * blockWidth + c * 19, //19px mellom blokkene horisontalt 
-                y : blockY + r * blockHeight + r * 20, //20px mellom blokken vertikalt
+                x : blockX + c * blockWidth + c*19, //19px mellom blokkene horisontalt 
+                y : blockY + r * blockHeight + r*20, //20px mellom blokken vertikalt
                 width : blockWidth,
                 height : blockHeight,
                 break : false
@@ -322,7 +340,7 @@ function resetGame() { //Setter spiller og ball tilbake til start posisjon
         width : playerWidth,
         height : playerHeight,
         velocityX: playerVelocityX
-    };
+    }
     
     ball = {
         x : boardWidth/2,
@@ -331,7 +349,7 @@ function resetGame() { //Setter spiller og ball tilbake til start posisjon
         height : ballHeight,
         velocityX : ballVelocityX,
         velocityY : ballVelocityY
-    };
+    }
     blockArray = [];
     blockRows = 3;
     score = 0;
