@@ -17,6 +17,7 @@
 
 .tetromino{
     background-color:rgb(249, 125, 0) ;
+    
    
 }
 
@@ -28,6 +29,7 @@
 
 body{
     background-color: rgb(225, 255, 217);
+    overflow-y:unset;
 }
 .grid{
     width: 400px;

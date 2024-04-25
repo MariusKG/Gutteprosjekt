@@ -2,8 +2,8 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     const grid = document.querySelector('.grid')
-    let squares = Array.from(document.querySelectorAll('.grid div')) //lager et array for alle de 200 div elementene i grid. De får hver sin verdi fra 0-199
-    const scoreDisplay = document.querySelector('#score')
+    let squares = Array.from(document.querySelectorAll('.grid div')) //lager et array for alle de 200 div elementene i grid klassen. De får hver sin verdi fra 0-199
+    let scoreDisplay = document.querySelector('#score')
     const startBtn = document.querySelector('#startButton') 
     const width = 10
     nextRandom = 0
@@ -15,6 +15,13 @@ document.addEventListener('DOMContentLoaded', () => {
         'MediumOrchid',
         'gold'
       ]
+      let score = 0
+      let highscoreDisplay = document.querySelector('#highScore')
+      let highScore = 0
+
+      highscoreDisplay.innerHTML = Number(localStorage.teller)
+      
+
 
    //Tetrominoer(navn for figurene). Lager de ulike formene tetris-blokkene kommer i. Bokastavene representerer formene
    const oTetromino = [
@@ -122,10 +129,29 @@ document.addEventListener('DOMContentLoaded', () => {
         currentPosition = 4
         draw()
         addScore()
+        gameOver()
+        score += 10
+        scoreDisplay.innerHTML = score
+        newHighScore()
+
     }
     }
     
-   
+
+    //Lager en funksjon for game-over
+    function gameOver() {
+        if(
+            current.some(index => squares[currentPosition + index + width].classList.contains('gameOver')) 
+            &&
+            current.some(index => squares[currentPosition + index + width].classList.contains('taken'))
+        ){
+            console.log("gameover")
+            clearInterval(timerId)
+            resetGame()
+
+    
+        }
+    }
        
     
 
@@ -164,7 +190,7 @@ function rotate (){
     draw()
 }
 
-//Funksjon for å fjerne tetrominoer når du har 1o ved siden, pluss å legge til score senere
+//Funksjon for å fjerne tetrominoer når du har 10 ved siden, pluss å legge til score senere
 function addScore() {
     for (let i = 0; i < 199; i +=width) {
       const row = [i, i+1, i+2, i+3, i+4, i+5, i+6, i+7, i+8, i+9]
@@ -174,17 +200,58 @@ function addScore() {
           squares[index].classList.remove('taken')
           squares[index].classList.remove('tetromino')
           squares[index].style.backgroundColor = ''
+          score += 10
+          scoreDisplay.innerHTML = score
+         
+          
         })
         const squaresRemoved = squares.splice(i, width)
         squares = squaresRemoved.concat(squares)
         squares.forEach(cell => grid.appendChild(cell))
       }
+      newHighScore()
     }
   }
+ 
+  //Gjør så man ikke kan scrolle nedover med arrowkeys
+  window.addEventListener("keydown", function(e) {
+    if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
+        e.preventDefault();
+    }
+}, false)
 
-  
+if(!localStorage.teller){
+    localStorage.teller = 0
+}
+else{
+    localStorage.teller = Number(localStorage.teller)
+}
 
 
+
+function newHighScore (){
+    if(score > localStorage.teller){
+        highScore = score
+        localStorage.teller = highScore
+        console.log("New Highscore")
+        highscoreDisplay.innerHTML = `${localStorage.teller}`
+    
+    }
+}
+
+
+
+
+function resetGame(){
+    console.log("hei")
+    score = 0
+    
+   
+}
+
+
+
+    
 
 
 
