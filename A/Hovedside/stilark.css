@@ -17,7 +17,6 @@ header{
 }
  
 h1{
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: 200;
     
 }
@@ -108,7 +107,7 @@ h3{
 
 .bilde{
     grid-column: 1/2;
-    grid-row: 2/3;
+    grid-row: 2/4;
 
     margin: 10%;
     display: flex;
@@ -117,7 +116,7 @@ h3{
 }
 
 img{
-    transform: scale(1.2);
+    transform: scale(2);
     width: 100px;
      height: 100px;
      margin: 0;
@@ -125,7 +124,7 @@ img{
 }
 
 .tekst{
-    width: 80%;
+    transform: scale(1);
     grid-column: 2/3;
     grid-row: 2/3;
     margin-left: 5%;
@@ -141,8 +140,6 @@ button{
     margin-left: 10%;
     margin-right: 10%;
     margin-bottom: 2%;
-    grid-column: 2/3;
-    grid-row: 3/4;
 }
 
 button:hover{
@@ -206,4 +203,19 @@ button:hover{
  
 #brickBreaker{
     top: 55%;
+}
+
+.gåTilSpill{
+    grid-column: 2/3;
+    grid-row: 3/4;
+}
+
+@media screen and (max-width: 680px) {
+    
+    a{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+    }
 }
