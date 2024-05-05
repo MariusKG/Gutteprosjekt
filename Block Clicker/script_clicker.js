@@ -13,44 +13,38 @@ const nivåEl = document.getElementById('nivå')
 const tilbakemeldingEl = document.getElementById('tilbakemelding')
 
 //Liste med ulike blokker
-const blocks = ['minecraft-dirt.png', 'minecraft-stein.png', 'minecraft-sand.png', 'minecraft-gold.png', 'minecraft-diamond.png','tetris.png']
-const blocksName = ['dirt', 'a rock', 'sand', 'gold', 'diamond', 'a tetris block, go play it']
+const blocks = ['./clicker_bilder/minecraft-dirt.png', './clicker_bilder/minecraft-stein.png', './clicker_bilder/minecraft-sand.png', './clicker_bilder/minecraft-gold.png', './clicker_bilder/minecraft-diamond.png','./clicker_bilder/tetris.png', './clicker_bilder/iceblock.png']
+const blocksName = ['dirt', 'a rock', 'sand', 'gold', 'diamond', 'a tetris block, go play it', 'an ice block, click before it melts']
 
-//Øker scoren, og lagrer i local storage
 
-// Sjekker om localStorage er mulig
-if (typeof localStorage !== 'undefined') {
-    // legger til localStorage.score hvis den ikke finnes
-    if (!localStorage.score) {
-        localStorage.score = 0;
-    }}
+
+
+// setter opp score og diamond counter
+let score = localStorage.getItem('score') || 0
+let diamonds = localStorage.getItem('diamonds') || 0
+
+    // Lager klikkfunksjon
 blockimgEl.addEventListener('click', function klikk(){
     localStorage.score=Number(localStorage.score)+1
     klikkEl.innerHTML='clicks='+ localStorage.score
 
-    // Setter opp spillscore
-    if(localStorage.score > 10000){
-        nivåEl.innerHTML = 'gold'
-        nivåEl.style.backgroundColor = 'gold'
-    }
-    else if (localStorage.score > 3000 && score<10000){
-        nivåEl.innerHTML = 'silver, next level: 10000'
-        nivåEl.style.backgroundColor = 'silver'
-    }
-    else if(localStorage.score > 1000 && score<3000){
-        nivåEl.innerHTML = 'bronze, next level: 3000'
-        nivåEl.style.backgroundColor = 'brown'
-    }
+
 
     //endrer blokk hver 100ende click
     if(localStorage.score%100 === 0){
         const i = Math.floor(Math.random()*blocks.length)
-        blockEl.innerHTML=`<img src="./${blocks[i]}" alt="Block" id="blokkbilde">`
+        blockEl.innerHTML=`<img src="${blocks[i]}" alt="Block" id="blokkbilde">`
         tilbakemeldingEl.innerHTML = `congratulations! you found ${blocksName[i]}`
 
         // Fjerner problem, lager en ny klikkfunksjon
         const updatedBlockImgEl = document.getElementById('blokkbilde')
         updatedBlockImgEl.addEventListener('click', klikk)
+
+        // diamond counter
+        if(blockEl.innerHTML=`<img src="./clicker_bilder/minecraft-diamond.png" alt="Block" id="blokkbilde">`){
+            localStorage.diamonds=Number(localStorage.diamonds)+1
+            nivåEl.innerHTML=`diamond counter: ${localStorage.diamonds}`
+        }
 
     }
 
