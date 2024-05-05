@@ -97,7 +97,7 @@ function update() { //For å oppdatere framen
     ctx.clearRect(0, 0, board.width, board.height) //Fjerner den tidligere posisjonen til spilleren
     
     //spiller
-    ctx.fillStyle = "lightblue"
+    ctx.fillStyle = "lightgreen"
     ctx.fillRect(player.x, player.y, player.width, player.height)
 
     // Ball
