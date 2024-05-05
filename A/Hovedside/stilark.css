@@ -22,12 +22,7 @@ h1{
     
 }
 
-
 .gameRow{
-
-.spillRad_1, .spillRad_2
-
-.gameRow_1{
     display: flex;
     justify-content: center;
 }
