@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     moveRightMobile.addEventListener('click', moveRight)
     moveDownMobile.addEventListener('click', moveDown)
     rotateMobile.addEventListener('click', rotate)
+    gameOverUnderText.addEventListener('click',resetGame)
     
     
 
@@ -155,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-
+ 
     //Lager en funksjon for game-over
     function gameOver(e) {
         if(
@@ -166,7 +167,6 @@ document.addEventListener('DOMContentLoaded', () => {
             score = 0 - 10
             clearInterval(timerId)
             gameOverMainText.innerHTML= "GAME OVER"
-            gameOverUnderText.innerHTML= "press space-bar to try again"
 
             document.addEventListener('keyup',restart)//Når knappen slippes skjer funksjonen
         }
@@ -268,7 +268,6 @@ function resetGame(){
 
     // Fjerner gameOver-tekst
     gameOverMainText.innerHTML = "";
-    gameOverUnderText.innerHTML = "";
 
     // Fjerner aktive tetrominoer
     undraw();
