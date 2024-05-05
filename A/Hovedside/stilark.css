@@ -3,12 +3,11 @@
     padding: 0;
     text-decoration: none;
     align-items: center;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family:Arial, Helvetica, sans-serif, sans-serif;
 }
 
 body{
-    background-color:rgb(225, 255, 217);
-    /*background-color: rgba(122, 223, 225, 0.3);*/
+    background-color:rgb(122, 223, 225);
 }
  
 header{
@@ -27,9 +26,9 @@ h1{
 }
 
 
-a{
+.gameRow .box{
     border: 2px solid black;
-    background-color: rgba(224, 255, 255, 1);
+    background-color: rgba(224, 255, 255, 0.6);
     padding: 50px;
     margin: 15px;
     margin-top: 50px;
@@ -42,7 +41,7 @@ a{
     justify-content: center;
 }
  
-a:hover{
+.gameRow .box:hover{
     
     border: 2px solid #434343;
     transition: 0.5s;
@@ -52,7 +51,7 @@ a:hover{
     background-color: rgba(224, 255, 255, 0.8);
 }
  
-a p {  
+.box p{  
     color: black;
     font-size: 20px;
     text-align: center;
@@ -75,9 +74,8 @@ a p {
 
 #gameExplanation{
     width: 80%;
-    height: 300vh;
+    height: 210vh;
     position: relative;
-   
 }
 
 h3{
@@ -154,7 +152,6 @@ button:hover{
 
 
 
-
 .line{
     position: absolute;
     width: 2px;
@@ -172,10 +169,10 @@ button:hover{
     top: 5%;
 }
 .game2{
-    top: 30%;
+    top: 35%;
 }
 .game3{
-    top: 55%;
+    top: 65%;
 }
 
 .game{
@@ -184,14 +181,15 @@ button:hover{
     height: 50vh;
     left: 14.5%;
 
+
     top: 5%;
+    
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 2fr 1fr;
     border: 2px solid black;
 
     background-color: rgba(224, 255, 255, 0.6);
-    
 }
     
 
@@ -204,11 +202,12 @@ button:hover{
 }
     
 #tetris{
-    top: 30%;
+    top: 35%;
+        
 }
  
 #brickBreaker{
-    top: 55%;
+    top: 65%;
 }
 
 .goToGame{
@@ -217,24 +216,41 @@ button:hover{
 }
 
 
+
+
+
+
 footer{
-    display: flex;
-
     background-color: lightgreen;
-    padding: 10%;
-    margin: 0;
-
+    padding: 3%;
+    font-size: large;
 }
 
 footer h1{
-
-
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 15px;
 }
 
-footer p{
-
+.footerInfo{
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
 }
 
+.authors{
+    margin: 0px 30px;
+}
+
+.links{
+    margin: 30px;
+}
+
+.linksHover:hover{
+    color: navy;
+    cursor: pointer;
+    text-decoration: underline;
+}
 
 
 
