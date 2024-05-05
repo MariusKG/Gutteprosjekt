@@ -1,4 +1,3 @@
-
 #board {
     background-color: rgb(25, 24, 24);
     border-top: 5px solid skyblue;
@@ -10,17 +9,21 @@
     margin-left: 300px;
 }
 
-*{
-    background-color:rgb(225, 255, 217);
+* {
+    background-color: rgb(225, 255, 217);
     margin: 0;
 }
 
 nav {
     background-color: rgb(173, 216, 230);
-    position: fixed; /* Gjør navigasjonsfeltet fast plassert */
-    top: 0; /* Plasserer det øverst på siden */
-    width: 100%; /* Setter bredden til 100% av siden */
+    position: absolute; 
+    top: 0; 
+    width: 100%; 
+    display: flex; 
+    align-items: center;  
+    padding: 0 20px; 
 }
+
 nav a:hover {
     background-color: rgb(229, 71, 71);
 }
@@ -32,11 +35,4 @@ nav a {
     padding: 20px;
     margin: 0px 10px;
     background-color: rgb(173, 216, 230);
-    display: inline-block;
-}
-
-nav h1 {
-    background-color: rgb(173, 216, 230);
-    text-align: center;
-    font-size: 30px;
 }
