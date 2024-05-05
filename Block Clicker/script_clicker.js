@@ -20,8 +20,20 @@ const blocksName = ['dirt', 'a rock', 'sand', 'gold', 'diamond', 'a tetris block
 
 
 // setter opp score og diamond counter
-let score = parseInt(localStorage.getItem('score')) || 0
-let diamonds = parseInt(localStorage.getItem('diamonds')) || 0
+let score = parseInt(localStorage.getItem('score'))
+if (isNaN(score)){
+    localStorage.score=0
+}
+else {
+    score=parseInt(localStorage.getItem('score'))
+}
+let diamonds = parseInt(localStorage.getItem('diamonds'))
+if (isNaN(diamonds)){
+    localStorage.diamonds=0
+}
+else{
+    diamonds = parseInt(localStorage.getItem('diamonds'))
+}
 
     // Lager klikkfunksjon
 blockimgEl.addEventListener('click', function klikk(){
@@ -73,13 +85,14 @@ shopExitEl.addEventListener('click', function(){
 
 
 //Alternativer i Shop
-const shopList = ['', 'Overworld.jpg' , 'Nether.jpg', 'nadderud.jpg']
+const shopList = ['', './clicker_bilder/Overworld.jpg' , './clicker_bilder/Nether.jpg', './clicker_bilder/nadderud.jpg', './clicker_bilder/chess.jpg']
 
 //Henter bakrunnene
 const bImg0 = document.getElementById(`bImg0`)
 const bImg1 = document.getElementById(`bImg1`)
 const bImg2 = document.getElementById(`bImg2`)
 const bImg3 = document.getElementById(`bImg3`)
+const bImg4 = document.getElementById(`bImg4`)
 
 //Endrer bakgrunnen ved å klikke
 for(let i=0;i<shopList.length;i++){
