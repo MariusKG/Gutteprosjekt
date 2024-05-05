@@ -7,8 +7,7 @@ header{
     height: 100px;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-
+    justify-content: space-between;
     background-color: lightgreen;
 }
 .headerKnapp{
@@ -27,23 +26,26 @@ header a{
     color: rgb(0, 0, 0);
     text-decoration: none;
     font-size: 20px;
-    padding-top: 30px;
-    padding-left: 32px;
-    padding-right: 32px;
-    padding-bottom: 20px;
-    margin: 10px;
+    padding-top: 40px;
+    padding-left: 42px;
+    padding-right: 42px;
+    padding-bottom: 30px;
     background-color: lightgreen;
     display: flex;
     align-items: center;
-    background-color: aliceblue;
-    border: 1px solid black;
+}
+header a:hover{
+    background-color: rgb(71, 186, 71);
+    transition: .5s;
 }
 main{
     padding-top: 30px;
+
 }
 #infoMenu{
     display: none;
     flex-direction: column;
+    text-align: center;
     width: 700px;
     height: 500px;
     top: 50%;
@@ -53,6 +55,9 @@ main{
     border-radius: 10%;
     border: 3px solid black;
 
+}
+.infotext{
+    margin:0px 100px;
 }
 #infomenu h1{
     text-align: center;

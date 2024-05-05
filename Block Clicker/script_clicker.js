@@ -43,7 +43,7 @@ blockimgEl.addEventListener('click', function klikk(){
 
 
     //endrer blokk hver 100ende click
-    if(localStorage.score%2 === 0){
+    if(localStorage.score%100 === 0){
         const i = Math.floor(Math.random()*blocks.length)
         blockEl.innerHTML=`<img src="${blocks[i]}" alt="Block" id="blokkbilde">`
         tilbakemeldingEl.innerHTML = `congratulations! you found ${blocksName[i]}`
