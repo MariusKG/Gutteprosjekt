@@ -2,12 +2,13 @@
  /* Lager et format for området banen skal være på. bestemmer også at indexen går i wrap, altså mot siden*/
 .container{
     display: flex;
+    margin-top: 10px;
 }
 
 /* Gir alle div-ene i grid elementet en plass inennfor grid-klassen*/
 .grid div{ 
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
 
 }
 
@@ -32,8 +33,8 @@ body{
     overflow-y:unset;
 }
 .grid{
-    width: 400px;
-    height: 800px;
+    width: 300px;
+    height: 600px;
     display: flex;
     flex-wrap: wrap;
     background-color: turquoise;
@@ -46,4 +47,16 @@ button{
     background-color: purple;
     color: white;
     padding: 10px;
+}
+
+@media(max-width: 600px) {
+    .mobileControls {
+        display: block; /* Viser knappene som blokk på små skjermer */
+    }
+}
+
+@media(min-width: 601px) {
+    .mobileControls {
+        display: none; /* Skjuler knappene på større skjermer */
+    }
 }
