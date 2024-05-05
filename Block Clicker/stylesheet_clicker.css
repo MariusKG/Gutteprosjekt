@@ -5,32 +5,39 @@
 }
 
 header{
-    height: 100px;
+    height: 80px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     background-color: lightgreen;
 }
 .headerKnapp{
-    width: 100px;
+    width: 130px;
     height: 80px;
-    margin-top: 10px;
-    background-color: aliceblue;
-    border: 1px solid black;
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 0px;
+    background-color: lightgreen;
+    font-size: 20px;
+    padding-top: 6.25px;
+    padding-bottom: 6.25px;
     
+}
+.headerKnapp:hover{
+    background-color: rgb(71, 186, 71);
+    transition: .5s;
 }
 
 header a{
     color: rgb(0, 0, 0);
     text-decoration: none;
     font-size: 20px;
-    padding-top: 40px;
+    padding-top: 30px;
     padding-left: 42px;
+    height: 30px;
     padding-right: 42px;
-    padding-bottom: 30px;
+    padding-bottom: 20px;
     background-color: lightgreen;
     display: flex;
     align-items: center;
