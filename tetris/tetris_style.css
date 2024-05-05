@@ -24,6 +24,7 @@
 *{
     text-align: center;
     margin: 0 auto;
+    font-family: Arial, Helvetica, sans-serif;
    
 }
 
@@ -36,7 +37,7 @@ body{
     height: 600px;
     display: flex;
     flex-wrap: wrap;
-    background-color: turquoise;
+    background-color: rgb(149, 233, 234);
     border: solid 2px black;
 }
 
@@ -72,6 +73,9 @@ button{
         width: 200px;
         height: 400px;
     }
+    button{
+        padding: 8px;
+    }
 }
 
 @media(min-width: 601px) {
@@ -89,7 +93,14 @@ button{
 }
 
 #gameOverMainText{
-    font-size: 25px;
+    font-size: 20px;
+    margin-top: 10px;
+    color: red;
+    
+}
+#gameOverUnderText{
+    margin-bottom: 10px;
+    padding: 5px
     
 }
 
@@ -100,11 +111,12 @@ nav {
     width: 100%; 
     display: flex; 
     align-items: center;  
-    padding: 0 20px; 
+    padding: 8px;
 }
 
 nav a:hover {
     background-color: rgb(71, 186, 71);
+    transition: 0.5s;
 }
 
 nav a {
@@ -116,5 +128,8 @@ nav a {
     background-color: lightgreen;
 }
 #scoreText{
-    margin-top:35px;
+    margin-top:45px;
+}
+#startButton{
+    padding: 8px;
 }
