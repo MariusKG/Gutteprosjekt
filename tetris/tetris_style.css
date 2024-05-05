@@ -41,7 +41,8 @@ body{
 }
 
 button{
-    padding: 10px;
+    padding: 18px;
+    background-color: pink;
 }
 
 
@@ -89,6 +90,7 @@ button{
 
 #gameOverMainText{
     font-size: 25px;
+    margin-bottom: 15px;
 }
 
 nav {
@@ -114,5 +116,5 @@ nav a {
     background-color: lightgreen;
 }
 #scoreText{
-    margin-top:30px;
+    margin-top:35px;
 }
