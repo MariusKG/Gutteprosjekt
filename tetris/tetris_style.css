@@ -110,8 +110,8 @@ nav {
     top: 0; 
     width: 100%; 
     display: flex; 
-    align-items: center;  
-    padding: 8px;
+    align-items: center; 
+
 }
 
 nav a:hover {
@@ -126,6 +126,7 @@ nav a {
     padding: 20px;
     margin: 0px 10px;
     background-color: lightgreen;
+    padding: 28px;
 }
 #scoreText{
     margin-top:45px;
