@@ -53,12 +53,20 @@ button{
     .mobileControls {
         display: block; /* Viser knappene som blokk på små skjermer */
     }
+    .grid div{ 
+        height: 20px;
+        width: 20px;    
+    }
+    .grid{
+        width: 200px;
+        height: 400px;
+    }
 }
 
 @media(min-width: 601px) {
     .mobileControls {
         display: none; /* Skjuler knappene på større skjermer */
-    }
+    }   
 }
 
 nav {
@@ -79,4 +87,8 @@ nav a {
     margin: 0px 10px;
     background-color: rgb(173, 216, 230);
     display: inline-block;
+}
+
+.mobileControls {
+    margin: 0px 0px;
 }
