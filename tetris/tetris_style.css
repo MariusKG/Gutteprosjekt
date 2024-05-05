@@ -90,7 +90,7 @@ button{
 
 #gameOverMainText{
     font-size: 25px;
-    margin-bottom: 15px;
+    
 }
 
 nav {
@@ -104,7 +104,7 @@ nav {
 }
 
 nav a:hover {
-    background-color: rgb(229, 71, 71);
+    background-color: rgb(71, 186, 71);
 }
 
 nav a {

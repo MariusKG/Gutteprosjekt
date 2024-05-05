@@ -15,20 +15,18 @@ document.addEventListener('DOMContentLoaded', () => {
         'MediumOrchid',
         'gold'
       ]
-      let score = 0
-      const highscoreDisplay = document.querySelector('#highScore')
-      let highScore = 0
-      const gameOverMainText = document.querySelector('#gameOverMainText')
-      const gameOverUnderText = document.querySelector('#gameOverUnderText')
-      highscoreDisplay.innerHTML = Number(localStorage.teller)
-      const moveDownMobile = document.getElementById('moveDownMobile')
-      const moveRightMobile = document.getElementById('moveRightMobile')
-      const moveLeftMobile = document.getElementById('moveLeftMobile')
-      const rotateMobile = document.getElementById('rotateMobile')
+    let score = 0
+    const highscoreDisplay = document.querySelector('#highScore')
+    let highScore = 0
+    const gameOverMainText = document.querySelector('#gameOverMainText')
+    const gameOverUnderText = document.querySelector('#gameOverUnderText')
+    highscoreDisplay.innerHTML = Number(localStorage.teller)
+    const moveDownMobile = document.getElementById('moveDownMobile')
+    const moveRightMobile = document.getElementById('moveRightMobile')
+    const moveLeftMobile = document.getElementById('moveLeftMobile')
+    const rotateMobile = document.getElementById('rotateMobile')
 
-      startBtn.addEventListener('click',pause)
-      
-    //
+    startBtn.addEventListener('click',pause)
     moveLeftMobile.addEventListener('click', moveLeft)
     moveRightMobile.addEventListener('click', moveRight)
     moveDownMobile.addEventListener('click', moveDown)
