@@ -9,7 +9,6 @@
 .grid div{ 
     height: 30px;
     width: 30px;
-
 }
 
 .full{
@@ -44,22 +43,22 @@ body{
 button{
     margin-bottom: 30px;
     margin-top: 30px;
-    background-color: purple;
-    color: white;
     padding: 10px;
 }
+
+
 
 @media(max-width: 600px) {
     .mobileControls {
         display: block; /* Viser knappene som blokk på små skjermer */
     }
     .grid div{ 
-        height: 20px;
-        width: 20px;    
+        height: 25px;
+        width: 25px;    
     }
     .grid{
-        width: 200px;
-        height: 400px;
+        width: 250px;
+        height: 500px;
     }
 }
 
@@ -69,26 +68,13 @@ button{
     }   
 }
 
-nav {
-    background-color: rgb(173, 216, 230);
-    position: fixed; /* Gjør navigasjonsfeltet fast plassert */
-    top: 0; /* Plasserer det øverst på siden */
-    width: 100%; /* Setter bredden til 100% av siden */
+#rotateMobile {
+    margin-bottom: 0px;
 }
-nav a:hover {
-    background-color: rgb(229, 71, 71);
+#moveDownMobile {
+    margin-top: 0px;
 }
 
-nav a {
-    color: rgb(0, 0, 0);
-    text-decoration: none;
-    font-size: 20px;
-    padding: 20px;
-    margin: 0px 10px;
-    background-color: rgb(173, 216, 230);
-    display: inline-block;
-}
-
-.mobileControls {
-    margin: 0px 0px;
+#gameOverMainText{
+    font-size: 25px;
 }
