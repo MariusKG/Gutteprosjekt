@@ -22,14 +22,9 @@ h1{
     
 }
 
-
-
-.spillRad_1, .spillRad_2
-
-.gameRow_1{
+.gameRow{
     display: flex;
-    
-
+    justify-content: center;
 }
 
 
@@ -41,10 +36,7 @@ a{
     margin-top: 50px;
     height: 100px;
     width: 100px;
-
-    /*background-image: url(./Hovedside_bilder/);*/
-
-    
+   
  
     display: flex;
     align-items: center;
