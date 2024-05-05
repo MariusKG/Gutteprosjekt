@@ -16,11 +16,25 @@ document.addEventListener('DOMContentLoaded', () => {
         'gold'
       ]
       let score = 0
-      let highscoreDisplay = document.querySelector('#highScore')
+      const highscoreDisplay = document.querySelector('#highScore')
       let highScore = 0
-
+      const gameOverMainText = document.querySelector('#gameOverMainText')
+      const gameOverUnderText = document.querySelector('#gameOverUnderText')
       highscoreDisplay.innerHTML = Number(localStorage.teller)
+      const moveDownMobile = document.getElementById('moveDownMobile')
+      const moveRightMobile = document.getElementById('moveRightMobile')
+      const moveLeftMobile = document.getElementById('moveLeftMobile')
+      const rotateMobile = document.getElementById('rotateMobile')
+
+      startBtn.addEventListener('click',pause)
       
+    //
+    moveLeftMobile.addEventListener('click', moveLeft)
+    moveRightMobile.addEventListener('click', moveRight)
+    moveDownMobile.addEventListener('click', moveDown)
+    rotateMobile.addEventListener('click', rotate)
+    
+    
 
 
    //Tetrominoer(navn for figurene). Lager de ulike formene tetris-blokkene kommer i. Bokastavene representerer formene
@@ -88,18 +102,18 @@ document.addEventListener('DOMContentLoaded', () => {
    // tid for hvor ofte tetrominoene skal falle nedover ved å kalle funksjonen moveDown som står nedenfor og ved å angi tid (i ms)
    timerId = setInterval(moveDown,500)
 
-   //Alle knapper på tastaturet har en keycode, som man kan bruke for å hente ved funksjoner ved tryk av denne keycoden. Her lager jeg funskjoner for de ulike keycodene så man kan bevege på tetrominoene senere i koden
+   //Alle knapper på tastaturet har en keycode, som man kan bruke for å hente ved funksjoner ved tryk av denne keycoden. Her lager jeg funskjoner for de ulike keycodene så man kan bevege på tetrominoene senere i koden. Timerid gjør så de ikke kan gjøres når det er pause
    function control(e) {
-    if(e.keyCode === 37) {
+    if(e.keyCode === 37 && (timerId)) {
         moveLeft()
     }
-     else if(e.keyCode === 39){
+     else if(e.keyCode === 39 && (timerId)){
         moveRight()
      }
-     else if(e.keyCode === 38){ //Rotasjon for knapp opp
+     else if(e.keyCode === 38 && (timerId)){ //Rotasjon for knapp opp
         rotate()
      }
-     else if(e.keyCode === 40){ //Flytter blokken nedover raskere for knapp ned
+     else if(e.keyCode === 40 && (timerId)){ //Flytter blokken nedover raskere for knapp ned
         moveDown() 
      }
    }
@@ -136,20 +150,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
     }
+
+    function restart(e){
+        if(e.keyCode === 32){
+            resetGame()
+        }
+    }
     
 
     //Lager en funksjon for game-over
-    function gameOver() {
+    function gameOver(e) {
         if(
             current.some(index => squares[currentPosition + index + width].classList.contains('gameOver')) 
             &&
             current.some(index => squares[currentPosition + index + width].classList.contains('taken'))
         ){
-            console.log("gameover")
+            score = 0 - 10
             clearInterval(timerId)
-            resetGame()
+            gameOverMainText.innerHTML= "GAME OVER"
+            gameOverUnderText.innerHTML= "press space-bar to try again"
 
-    
+            document.addEventListener('keyup',restart)//Når knappen slippes skjer funksjonen
         }
     }
        
@@ -243,16 +264,44 @@ function newHighScore (){
 
 
 function resetGame(){
-    console.log("hei")
-    score = 0
-    
-   
+    console.log("resetgame")
+    score = 0;
+    scoreDisplay.innerHTML = score;
+
+    // Fjerner gameOver-tekst
+    gameOverMainText.innerHTML = "";
+    gameOverUnderText.innerHTML = "";
+
+    // Fjerner aktive tetrominoer
+    undraw();
+
+    // Tilbakestiller alle firkantene i rutenettet
+    squares.forEach(square => {
+        square.classList.remove('tetromino');
+        square.classList.remove('taken');
+        square.style.backgroundColor = '';
+    });
+    currentPosition = 4
+    currentRotation = 0
+    random = Math.floor(Math.random() * tetrominoes.length)
+    current = tetrominoes[random][0]
+    draw()
+    clearInterval(timerId)
+    timerId = setInterval(moveDown, 500);
+
 }
 
 
-
-    
-
+function pause(){
+    if (timerId) {
+      clearInterval(timerId )
+      timerId = null
+    } else {
+      draw()
+      timerId = setInterval(moveDown, 500)
+      nextRandom = Math.floor(Math.random()*tetrominoes.length)
+    }
+  }
 
 
 
