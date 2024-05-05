@@ -60,3 +60,23 @@ button{
         display: none; /* Skjuler knappene på større skjermer */
     }
 }
+
+nav {
+    background-color: rgb(173, 216, 230);
+    position: fixed; /* Gjør navigasjonsfeltet fast plassert */
+    top: 0; /* Plasserer det øverst på siden */
+    width: 100%; /* Setter bredden til 100% av siden */
+}
+nav a:hover {
+    background-color: rgb(229, 71, 71);
+}
+
+nav a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 20px;
+    padding: 20px;
+    margin: 0px 10px;
+    background-color: rgb(173, 216, 230);
+    display: inline-block;
+}
