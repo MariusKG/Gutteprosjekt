@@ -66,6 +66,7 @@ let bomb = {
 }
 
 
+
 window.onload = function() { //onload = kjøres når vinduet er ferdig lastet inn
     board = document.getElementById("board")
     board.height = boardHeight
@@ -97,7 +98,7 @@ function update() { //For å oppdatere framen
     ctx.clearRect(0, 0, board.width, board.height) //Fjerner den tidligere posisjonen til spilleren
     
     //spiller
-    ctx.fillStyle = "lightblue"
+    ctx.fillStyle = "lightgreen"
     ctx.fillRect(player.x, player.y, player.width, player.height)
 
     // Ball
@@ -116,7 +117,7 @@ function update() { //For å oppdatere framen
     }
     else if (ball.y + ball.height >= boardHeight) {
         //hvis ball treffer bunnen av canvas = game over
-        ctx.font = "30px sans-serif"
+        ctx.font = "30px Arial"
         ctx.fillText("Game Over: press 'space' to restart", 150, 500)
         gameOver = true
     }

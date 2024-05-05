@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const grid = document.querySelector('.grid')
     let squares = Array.from(document.querySelectorAll('.grid div')) //lager et array for alle de 200 div elementene i grid klassen. De får hver sin verdi fra 0-199
-    let scoreDisplay = document.querySelector('#score')
+    const scoreDisplay = document.querySelector('#score')
     const startBtn = document.querySelector('#startButton') 
     const width = 10
     nextRandom = 0
@@ -15,24 +15,23 @@ document.addEventListener('DOMContentLoaded', () => {
         'MediumOrchid',
         'gold'
       ]
-      let score = 0
-      const highscoreDisplay = document.querySelector('#highScore')
-      let highScore = 0
-      const gameOverMainText = document.querySelector('#gameOverMainText')
-      const gameOverUnderText = document.querySelector('#gameOverUnderText')
-      highscoreDisplay.innerHTML = Number(localStorage.teller)
-      const moveDownMobile = document.getElementById('moveDownMobile')
-      const moveRightMobile = document.getElementById('moveRightMobile')
-      const moveLeftMobile = document.getElementById('moveLeftMobile')
-      const rotateMobile = document.getElementById('rotateMobile')
+    let score = 0
+    const highscoreDisplay = document.querySelector('#highScore')
+    let highScore = 0
+    const gameOverMainText = document.querySelector('#gameOverMainText')
+    const gameOverUnderText = document.querySelector('#gameOverUnderText')
+    highscoreDisplay.innerHTML = Number(localStorage.teller)
+    const moveDownMobile = document.getElementById('moveDownMobile')
+    const moveRightMobile = document.getElementById('moveRightMobile')
+    const moveLeftMobile = document.getElementById('moveLeftMobile')
+    const rotateMobile = document.getElementById('rotateMobile')
 
-      startBtn.addEventListener('click',pause)
-      
-    //
+    startBtn.addEventListener('click',pause)
     moveLeftMobile.addEventListener('click', moveLeft)
     moveRightMobile.addEventListener('click', moveRight)
     moveDownMobile.addEventListener('click', moveDown)
     rotateMobile.addEventListener('click', rotate)
+    gameOverUnderText.addEventListener('click',resetGame)
     
     
 
@@ -157,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-
+ 
     //Lager en funksjon for game-over
     function gameOver(e) {
         if(
@@ -168,7 +167,6 @@ document.addEventListener('DOMContentLoaded', () => {
             score = 0 - 10
             clearInterval(timerId)
             gameOverMainText.innerHTML= "GAME OVER"
-            gameOverUnderText.innerHTML= "press space-bar to try again"
 
             document.addEventListener('keyup',restart)//Når knappen slippes skjer funksjonen
         }
@@ -270,7 +268,6 @@ function resetGame(){
 
     // Fjerner gameOver-tekst
     gameOverMainText.innerHTML = "";
-    gameOverUnderText.innerHTML = "";
 
     // Fjerner aktive tetrominoer
     undraw();
