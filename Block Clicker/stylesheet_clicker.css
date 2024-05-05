@@ -16,7 +16,7 @@ header{
 .headerKnapp{
     width: 100px;
     height: 80px;
-    background-color: plum;
+    background-color: aliceblue;
     border: 1px solid black;
     display: flex;
     align-items: center;

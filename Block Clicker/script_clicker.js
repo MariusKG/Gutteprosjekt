@@ -20,18 +20,18 @@ const blocksName = ['dirt', 'a rock', 'sand', 'gold', 'diamond', 'a tetris block
 
 
 // setter opp score og diamond counter
-let score = localStorage.getItem('score') || 0
-let diamonds = localStorage.getItem('diamonds') || 0
+let score = parseInt(localStorage.getItem('score')) || 0
+let diamonds = parseInt(localStorage.getItem('diamonds')) || 0
 
     // Lager klikkfunksjon
 blockimgEl.addEventListener('click', function klikk(){
-    localStorage.score=Number(localStorage.score)+1
+    localStorage.setItem('score', Number(localStorage.getItem('score')) + 1);
     klikkEl.innerHTML='clicks='+ localStorage.score
 
 
 
     //endrer blokk hver 100ende click
-    if(localStorage.score%100 === 0){
+    if(localStorage.score%2 === 0){
         const i = Math.floor(Math.random()*blocks.length)
         blockEl.innerHTML=`<img src="${blocks[i]}" alt="Block" id="blokkbilde">`
         tilbakemeldingEl.innerHTML = `congratulations! you found ${blocksName[i]}`
@@ -41,9 +41,10 @@ blockimgEl.addEventListener('click', function klikk(){
         updatedBlockImgEl.addEventListener('click', klikk)
 
         // diamond counter
-        if(blockEl.innerHTML=`<img src="./clicker_bilder/minecraft-diamond.png" alt="Block" id="blokkbilde">`){
-            localStorage.diamonds=Number(localStorage.diamonds)+1
+        if(blockEl.innerHTML===`<img src="./clicker_bilder/minecraft-diamond.png" alt="Block" id="blokkbilde">`){
+            localStorage.setItem('diamonds', Number(localStorage.getItem('diamonds'))+1)
             nivåEl.innerHTML=`diamond counter: ${localStorage.diamonds}`
+            console.log('blockEl.innerHTML=', blockEl.innerHTML)
         }
 
     }
