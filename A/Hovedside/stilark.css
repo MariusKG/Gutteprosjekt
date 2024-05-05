@@ -4,6 +4,7 @@
     text-decoration: none;
     align-items: center;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /*background-color:rgb(225, 255, 217);*/
 }
  
 body{
@@ -20,6 +21,8 @@ h1{
     font-weight: 200;
     
 }
+
+
 
 .spillRad_1, .spillRad_2{
     display: flex;
