@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const grid = document.querySelector('.grid')
     let squares = Array.from(document.querySelectorAll('.grid div')) //lager et array for alle de 200 div elementene i grid klassen. De får hver sin verdi fra 0-199
-    let scoreDisplay = document.querySelector('#score')
+    const scoreDisplay = document.querySelector('#score')
     const startBtn = document.querySelector('#startButton') 
     const width = 10
     nextRandom = 0

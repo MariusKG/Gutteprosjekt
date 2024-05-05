@@ -29,7 +29,7 @@
 }
 
 body{
-    background-color: rgb(225, 255, 217);
+    background-color: rgb(122, 223, 225);
     overflow-y:unset;
 }
 .grid{
@@ -37,7 +37,7 @@ body{
     height: 600px;
     display: flex;
     flex-wrap: wrap;
-    background-color: rgb(149, 233, 234);
+    background-color:  rgb(195, 255, 187);
     border: solid 2px black;
 }
 
