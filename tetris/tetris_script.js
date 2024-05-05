@@ -160,9 +160,9 @@ document.addEventListener('DOMContentLoaded', () => {
     //Lager en funksjon for game-over
     function gameOver(e) {
         if(
-            current.some(index => squares[currentPosition + index + width].classList.contains('gameOver')) 
+            current.some(index => squares[currentPosition + index].classList.contains('gameOver')) 
             &&
-            current.some(index => squares[currentPosition + index + width].classList.contains('taken'))
+            current.some(index => squares[currentPosition + index].classList.contains('taken'))
         ){
             score = 0 - 10
             clearInterval(timerId)
