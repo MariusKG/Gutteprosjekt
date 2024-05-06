@@ -123,14 +123,14 @@ function update() { //For å oppdatere framen
     }
 
     //ball sprette av spiller (Med endring av x fart)
-    if(topCollision(ball, player) || bottomCollision(ball, player)){
-        ball.velocityY *= -1 //Endre y retningen opp eller ned
+    if(topCollision(ball, player)){
+        ball.velocityY *= -1 //Endre y retningen opp
         
         if (rightCollisionPlayer(ball, player)){
-            ball.velocityX += 1; 
+            ball.velocityX += 1;
         }
         if (leftCollisionPlayer(ball, player)){
-            ball.velocityX -= 1; 
+            ball.velocityX -= 1;
         }
     }
     // Sjekk om ballen treffer bomben
@@ -236,7 +236,7 @@ function randomBlockColor() {
     return blockColors[randomColor]
 }
 
-//Funksjon for å flytte spiller til venstre/høyre
+//Funksjon for å flytte spiller til venstre/høyre (trigges ved event)
 function movePlayer(e) {
     if(gameOver) {
         if (e.code == "Space") {
