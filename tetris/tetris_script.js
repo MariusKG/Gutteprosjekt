@@ -82,11 +82,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
    //lager en funksjon for å tegne den første tetrominoene
    function draw() {
-    current.forEach(index=>{
-        squares[currentPosition + index].classList.add('tetromino')
+    current.forEach(function(index) {
+        squares[currentPosition + index].classList.add('tetromino')   
         squares[currentPosition + index].style.backgroundColor = colors[random]
     })
-   }
+}
 
    //lager en funksjon for å fjerne en tetromino
    function undraw (){
@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
  
     //Lager en funksjon for game-over
-    function gameOver(e) {
+    function gameOver() {
         if(
             current.some(index => squares[currentPosition + index].classList.contains('gameOver')) 
             &&
@@ -243,7 +243,7 @@ if(!localStorage.teller){
     localStorage.teller = 0
 }
 else{
-    localStorage.teller = Number(localStorage.teller)
+    localStorage.teller = 0
 }
 
 
