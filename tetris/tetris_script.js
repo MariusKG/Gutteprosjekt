@@ -243,7 +243,7 @@ if(!localStorage.teller){
     localStorage.teller = 0
 }
 else{
-    localStorage.teller = 0
+    localStorage.teller = Number(localStorage.teller)
 }
 
 
