@@ -19,6 +19,13 @@ header{
 h1{
     font-weight: 200;
 }
+@font-face {
+    font-family: "dasher";
+    src: url("https://fonts.cdnfonts.com/css/dasher");
+    src: url("https://fonts.cdnfonts.com/css/dasher.woff") format("woff"),
+    url("https://fonts.cdnfonts.com/css/dasher.otf") format("opentype"),
+    url("https://fonts.cdnfonts.com/css/dasher.svg#dasher") format("svg");
+    }
  
 .gameRow{
     display: flex;
@@ -116,14 +123,18 @@ img{
     padding: 0;
 }
  
- 
+
 .text{
     transform: scale(1);
     grid-column: 2/3;
     grid-row: 2/3;
     margin-left: 5%;
     margin-right: 5%;
-    font-size: 50px;
+    
+}
+
+.text h3{
+    font-size: medium;
 }
  
 button{
@@ -219,14 +230,15 @@ button:hover{
  
  
  
- 
+
 footer{
     background-color: lightgreen;
-    padding: 3%;
+    padding: 1%;
     font-size: large;
 }
  
 footer h1{
+    text-shadow: #434343;
     margin-top: 15px;
     margin-bottom: 15px;
     margin-left: 15px;
@@ -239,15 +251,26 @@ footer h1{
 }
  
 .authors{
-    margin: 0px 30px;
+    margin: 0px 30px;    
 }
- 
-.links{
-    margin: 30px;
+
+.links, .authors{  
+    background-color: rgba(224, 255, 255, 0.6);
+    padding: 3%;
+    border: 3px solid#434343;
+    border-radius: 15px;
+}
+
+.authors:hover, .links:hover{
+    transition: 1s;
+    background-color: lightblue;
+    border: 2px solid black;
+    transform: scale(1.05);
+
 }
  
 .linksHover:hover{
-    color: navy;
+    color: rgba(0, 0, 128, 0.5);
     cursor: pointer;
     text-decoration: underline;
 }
