@@ -24,7 +24,7 @@ let player = {
 //Ball
 let ballWidth = 10
 let ballHeight = 10
-let ballVelocityX = 3 //siste level: 6.4 //4
+let ballVelocityX = 4 //siste level: 6.4 //4
 let ballVelocityY = 3 //siste level: 5.4 //3
 
 //objekt for ball
@@ -123,16 +123,14 @@ function update() { //For å oppdatere framen
     }
 
     //ball sprette av spiller (Med endring av x fart)
-    if(topCollision(ball, player) || bottomCollision(ball, player)){
-        ball.velocityY *= -1 //Endre y retningen opp eller ned
+    if(topCollision(ball, player)){
+        ball.velocityY *= -1 //Endre y retningen opp
         
         if (rightCollisionPlayer(ball, player)){
-            ball.velocityX += 1; //0.5
-            console.log("høyre")
+            ball.velocityX += 1;
         }
         if (leftCollisionPlayer(ball, player)){
-            ball.velocityX -= 1; //0.5
-            console.log("venstre")
+            ball.velocityX -= 1;
         }
     }
     // Sjekk om ballen treffer bomben
@@ -238,12 +236,7 @@ function randomBlockColor() {
     return blockColors[randomColor]
 }
 
-//Setter grenser på venstre og høyre siden
-function outOfBounds(xPosition){
-    return (xPosition < -playerWidth || xPosition > boardWidth) 
-}
-
-//Funksjon for å flytte spiller til venstre/høyre
+//Funksjon for å flytte spiller til venstre/høyre (trigges ved event)
 function movePlayer(e) {
     if(gameOver) {
         if (e.code == "Space") {
@@ -272,20 +265,21 @@ function movePlayer(e) {
     }
 }
 
-function detectCollision(a, b) { //2 rektangler: a og b
-    return a.x < b.x + b.width && //a's øvre venstre hjørne når ikke b's øverste høyre hjørne
-    a.x + a.width > b.x &&  //a's øvre høyre hjørne passerer b's øverste venstre hjørne
-    a.y < b.y + b.height && //a's øvre venstre hjørne når ikke b's nedre venstre hjørne
-    a.y + a.height > b.y; //a's nedre venstre hjørne passerer b's øvre venstre hjørne
+//Kollisjon mellom to rektangler a og b, horisontalt og vertikalt. Hvis alle betingelsene er sanne, er det en kollisjon
+function detectCollision(a, b) { 
+    return a.x < b.x + b.width && //venstre kanten av rektangel a er til venstre for høyre kanten av rektangel b (Med width mellom dem)
+    a.x + a.width > b.x &&  //venstre kanten av rektangel a er til venstre for høyre kanten av rektangel b
+    a.y < b.y + b.height && //høyre kanten av rektangel a (a.x + a.width) er til høyre for venstre kanten av rektangel b
+    a.y + a.height > b.y //toppen av rektangel a (a.y) er over bunnen av rektangel b (b.y + b.height)
 }
 
 //Funksjoner for kollisjon oppå, under, venstre og høyre av blokkene
 function topCollision(ball, block) {
-    return detectCollision(ball, block) && block.y >= ball.y //ball: y+h >= block: y
+    return detectCollision(ball, block) && block.y >= ball.y 
 }
  
 function bottomCollision(ball, block) {
-    return detectCollision(ball, block) && (block.y + block.height) <= ball.y + ball.height //block: y+h >= ball: y
+    return detectCollision(ball, block) && (block.y + block.height) <= ball.y + ball.height
 }
 
 function leftCollision(ball, block) { 
@@ -305,11 +299,11 @@ function leftCollisionPlayer(ball, player) {
 }
 
 function topCollisionBomb(ball, bomb) {
-    return detectCollision(ball, bomb) && bomb.y >= ball.y //ball: y+h >= bomb: y
+    return detectCollision(ball, bomb) && bomb.y >= ball.y
 }
 
 function bottomCollisionBomb(ball, bomb) {
-    return detectCollision(ball, bomb) && (bomb.y + bomb.height) <= ball.y + ball.height //bomb: y+h >= ball: y
+    return detectCollision(ball, bomb) && (bomb.y + bomb.height) <= ball.y + ball.height
 }
 
 function leftCollisionBomb(ball, bomb) { 
