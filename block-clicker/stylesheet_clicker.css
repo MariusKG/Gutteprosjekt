@@ -102,6 +102,16 @@ main{
     height: 400px;
     text-align: center;
 }
+.images{
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.images:hover{
+    background-color: lightgray;
+    transition: .5s;
+}
 
 #shopExit{
     width: 100px;
