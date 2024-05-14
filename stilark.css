@@ -19,14 +19,7 @@ header{
 h1{
     font-weight: 200;
 }
-@font-face {
-    font-family: "dasher";
-    src: url("https://fonts.cdnfonts.com/css/dasher");
-    src: url("https://fonts.cdnfonts.com/css/dasher.woff") format("woff"),
-    url("https://fonts.cdnfonts.com/css/dasher.otf") format("opentype"),
-    url("https://fonts.cdnfonts.com/css/dasher.svg#dasher") format("svg");
-    }
- 
+
 .gameRow{
     display: flex;
     justify-content: center;
@@ -90,7 +83,6 @@ h3{
     font-size: small;
     align-items: center;
     justify-content: center;
-   
 }
  
  
@@ -247,6 +239,7 @@ footer h1{
 .footerInfo{
     display: flex;
     flex-direction: row;
+    justify-content: center;
     margin: 10px;
 }
  
