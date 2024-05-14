@@ -126,7 +126,7 @@ img{
 }
 
 .text h3{
-    font-size: medium;
+    font-size: large;
 }
  
 button{
@@ -253,13 +253,8 @@ footer h1{
     border: 3px solid#434343;
     border-radius: 15px;
 }
-
-.authors:hover, .links:hover{
-    transition: 1s;
-    background-color: lightblue;
-    border: 2px solid black;
-    transform: scale(1.05);
-
+.links{
+    height: 100px;
 }
  
 .linksHover:hover{
@@ -267,7 +262,7 @@ footer h1{
     cursor: pointer;
     text-decoration: underline;
 }
- 
+
  
 @media(max-width: 900px) {
     
