@@ -362,4 +362,6 @@ function resetGame() { //Setter spiller og ball tilbake til start posisjon
         velocityX: 2, // Hastighet i x-retning
         velocityY: 0 // Hastighet i y-retning
     };
+
+    level = 1
 }
